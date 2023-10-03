@@ -1,0 +1,276 @@
+--------------------------------------IT21291432--------------------------------------
+#include <iostream>
+#define size 2
+using namespace std;
+
+//Declaring Blog Class
+class Blog{
+private:
+    string blogID;
+    string title;
+    string date;
+    User *user[size];
+public:
+    Blog();
+    Blog(string pblogID, string ptitle, string pdate, User *puser);
+    void addPost();
+    void updateBlog();
+    void displayBlog();
+    ~Blog();
+};
+
+//Implementing Blog Class
+Blog::Blog(){
+    blogID = "No ID entered";
+    title = "No title entered";
+    date = "No date entered";
+}
+Blog::Blog(string pblogID, string ptitle, string pdate, User *puser){
+    blogID = pblogID;
+    title = ptitle;
+    date = pdate;
+    user = puser;
+    cout << "Constructor executed" << endl;
+}
+void Blog::addPost(){}
+void Blog::updateBlog(){}
+void Blog::displayBlog(){}
+Blog::~Blog(){
+cout << "Blog deleted" << endl;
+}
+
+//Declaring Enrollment Class
+class Enrollment{
+private:
+    Training_Sessions *trSessions;
+    Registered_Customer *regCustomer;
+    string date;
+public:
+    Enrollment();
+    Enrollment(string pdate);
+    void display();
+    ~Enrollment();
+};
+
+//Implementing Enrollment Class
+Enrollment::Enrollment(){
+    date = "No date Entered";
+}
+Enrollment::Enrollment(string pdate){
+    date = pdate;
+    cout << "Constructor executed" << endl;
+}
+void Enrollment::display(){
+    cout << "Date : " << date << endl;
+}
+Enrollment::~Enrollment(){
+    cout << "Order deleted" << endl;
+}
+
+//Declaring Registered customer Class
+class Registered_Customer : public User{
+private:
+    string customerName;
+    string customerID;
+    string address;
+    double contactNumber;
+    Trainer *trainer;
+    Order *order[size];
+
+public:
+    Registered_Customer();
+    Registered_Customer(string pname, string pemail, string pcustomerID, string paddress, double pcontactNumber, Trainer *ptrainer, Order *porder);
+    void updateDetails();
+    void printDetails();
+    ~Registered_Customer();
+};
+
+//Implementing Registered customer Class
+Registered_Customer::Registered_Customer(){
+    customerID = "No ID entered";
+    address = "No address entered";
+    contactNumber = 0.0;
+}
+Registered_Customer::Registered_Customer(string pname, string pemail, string pcustomerID, string paddress, double pcontactNumber, Trainer *ptrainer, Order *porder){
+    customerID = pcustomerID;
+    address = paddress;
+    contactNumber = pcontactNumber;
+    trainer = ptrainer;
+    order = porder
+    cout << "Constructor executed" << endl;
+}
+void Registered_Customer::updateDetails(){}
+void Registered_Customer::printDetails(){
+    cout << "Customer ID : " << customerID << endl;
+    cout << "Customer Address : " << address << endl;
+    cout << "Customer Contact Number : " << contactNumber << endl;
+}
+Registered_Customer::~Registered_Customer(){
+    cout << "Registered_Customer deleted" << endl;
+}
+
+//Declaring Trainer Class
+class Trainer{
+private:
+    string trainerName;
+    string trainerID;
+    string trainerPassword;
+public:
+    Trainer();
+    Trainer(string ptrainerName, string ptrainerID, string ptrainerPassword);
+    void addSession();
+    void displaySessionDetails();
+    ~Trainer();
+};
+
+//Implementing Trainer Class
+Trainer::Trainer(){
+    trainerName = "No name entered";
+    trainerID = "No ID entered";
+    trainerPassword = "No password entered";
+}
+Trainer::Trainer(string ptrainerName, string ptrainerID, string ptrainerPassword){
+    trainerName = ptrainerName;
+    trainerID = ptrainerID;
+    trainerPassword = ptrainerPassword;
+    cout << "Constructor executed" << endl;
+}
+void Trainer::addSession(){}
+void Trainer::displaySessionDetails(){}
+Trainer::~Trainer(){
+    cout << "Trainer deleted" << endl;
+}
+
+//Declaring Un-registered customer Class
+class UnRegistered_Customer : public User{
+public:
+    UnRegistered_Customer();
+    UnRegistered_Customer(string pname, string pemail);
+    void register_();
+    void viewTrainer();
+    ~UnRegistered_Customer();
+};
+
+//Implementing Registered customer Class
+Unregistered_Customer::UnRegistered_Customer(){}
+Unregistered_Customer::UnRegistered_Customer(string pname, string pemail){
+    cout << "Constructor executed" << endl;
+}
+void Unregistered_Customer::register_(){}
+void Unregistered_Customer::viewTrainer(){}
+Unregistered_Customer::~UnRegistered_Customer(){
+    cout << "Unregistered_Customer deleted" << endl;
+}
+
+//Declaring User Class
+class User{
+private:
+    string name;
+    string email;
+    Blog *blog[size];
+public:
+    User();
+    User(string pname, string pemail, Blog *pblog);
+    void verifyLogin();
+    ~User();
+};
+
+//Implementing User Class
+User::User(){
+    name = "No name Entered";
+    email = "No email entered";
+}
+User::User(string pname, string pemail, Blog *pblog){
+    name = pname;
+    email = pemail;
+    blog = pblog;
+    cout << "Constructor executed" << endl;
+}
+void User::verifyLogin(){}
+User::~User() {
+    cout << "User deleted" << endl;
+}
+
+--------------------------------------IT21291432--------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+#include "Blog.h"
+#include "Enrollment.h"
+#include "Registered_Customer.h"
+#include "Trainer.h"
+#include "User.h"
+#include "Doctor.h"
+#include "Order.h"
+#include "Equipment.h"
+#include "FoodSupplement.h"
+#include "CustomerServiceAgent.h"
+
+int main(){
+//Creating objects
+    Registered_Customer* r1 = new Registered_Customer("Supun Imesh", "supunimesh00@gmail.com", "BSK1065", 0784629654);
+    Trainer* t1 = new Trainer("Deepal Alahakon", "T10956", "Deepal954@321");
+    CustomerServiceAgent* c1 = new CustomerServiceAgent("A5065", "C1099");
+    Doctor* d1 = new Doctor("Lalith Kumara", 0713973213, "D50987");
+    Blog *b1 = new Blog("B1050", "Healthy Foods", "2022-05-09", u1);
+    User *u1 = new User("Kavindu Thenuka", "kavinduthenu79@gmail.com", b1);
+    Order *o1 = new Order("O213", "2022-05-09", 1200, r1, e1, f1)
+    Equipment *e1 = new Equipment("E02", 6, 200);
+    FoodSupplement *f1 = new FoodSupplement("F03", 2, 600);
+
+    r1->printDetails();
+    cout<<"\n*****************\n"<<endl;
+    t1->displaySessionDetails();
+    cout<<"\n*****************\n"<<endl;
+    c1->displayAgentDetails();
+    cout<<"\n*****************\n"<<endl;
+    b1->displayBlog();
+    cout<<"\n*****************\n"<<endl;
+    e1->DisplayEquipmentDetails();
+    cout<<"\n*****************\n"<<endl;
+    f1->DisplayFoodSupplementDetails();
+
+    //Delete objects
+    delete r1;
+    delete t1;
+    delete c1;
+    delete b1;
+    delete e1;
+    delete f1;
+
+    return 0;
+}
